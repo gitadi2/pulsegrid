@@ -556,6 +556,7 @@ with tab4:
             f"<b style='color:{INK}'>r={fid['corr']:.2f}</b></div>",
             unsafe_allow_html=True)
     st.write("")
+    _rec, _flg = mx['closure']['recall_at_30'], mx['closure']['flag_rate_at_30']
     st.markdown(
         f"<div style='background:{PANEL};border:1px solid {LINE};border-left:5px solid {GREEN};"
         f"border-radius:8px;padding:12px 16px;margin:4px 0'>"
