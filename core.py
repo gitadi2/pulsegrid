@@ -6,6 +6,8 @@ All ML runs on scikit-learn only (HistGradientBoosting) so the app deploys with 
 heavy dependencies. Models train in a few seconds on ~8k rows and are cached by the app.
 """
 import os
+import re
+import glob
 import numpy as np
 import pandas as pd
 from sklearn.compose import ColumnTransformer
@@ -21,7 +23,38 @@ from sklearn.metrics import (
 )
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-DATA_PATH = os.path.join(HERE, "data", "astram_events.csv")
+
+_DATA_CANDIDATES = [
+    os.path.join(HERE, "data", "astram_events.csv"),
+    os.path.join(HERE, "astram_events.csv"),
+    os.path.join(os.getcwd(), "data", "astram_events.csv"),
+    os.path.join(os.getcwd(), "astram_events.csv"),
+]
+
+
+def _find_data():
+    for c in _DATA_CANDIDATES:
+        if os.path.exists(c):
+            return c
+    # fallback: locate any CSV in the repo (handles renamed/original-named exports)
+    for d in (HERE, os.path.join(HERE, "data"), os.getcwd(),
+              os.path.join(os.getcwd(), "data")):
+        if not os.path.isdir(d):
+            continue
+        hits = sorted(glob.glob(os.path.join(d, "*.csv")))
+        pref = [h for h in hits
+                if re.search(r"astram|event", os.path.basename(h), re.I)]
+        if pref:
+            return pref[0]
+        if hits:
+            return hits[0]
+    raise FileNotFoundError(
+        "No incident CSV found in the repo. Upload the ASTraM export (any .csv "
+        "name works) to the repo root or a data/ folder. Looked in: "
+        + " | ".join(_DATA_CANDIDATES))
+
+
+DATA_PATH = _DATA_CANDIDATES[0]
 
 CAT_COLS = ["event_type", "event_cause", "veh_type", "corridor", "police_station"]
 NUM_COLS = ["lat", "lon", "hour", "dow", "month", "is_weekend", "is_night"]
@@ -31,8 +64,8 @@ SEV_WEIGHT = {"High": 2.0, "Low": 1.0}
 
 
 # ----------------------------------------------------------------------------- data
-def load_and_prepare(path: str = DATA_PATH) -> pd.DataFrame:
-    df = pd.read_csv(path)
+def load_and_prepare(path: str = None) -> pd.DataFrame:
+    df = pd.read_csv(path or _find_data())
     sd = pd.to_datetime(df["start_datetime"], errors="coerce", utc=True)
     rd = pd.to_datetime(df["resolved_datetime"], errors="coerce", utc=True)
     cd = pd.to_datetime(df["closed_datetime"], errors="coerce", utc=True)
