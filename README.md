@@ -118,3 +118,27 @@ clearance *band* rather than overclaiming a point estimate. Priority is near-det
 in this dataset — the model recovers that logic at ~100%, which is a feature (consistent instant
 triage), not leakage. The Policy Lab compares two dispatch policies on an identical simulated stream;
 it is a controlled what-if, clearly labelled as such, not a claim about historical outcomes.
+
+---
+
+### Built by ADITYA SATAPATHY
+
+<p align="center">
+  <a href="https://github.com/gitadi2" target="_blank"><img src="https://cdn.simpleicons.org/github/ffffff" alt="GitHub @gitadi2" height="40" style="margin: 0 15px;"/></a>
+  <img width="12" />
+  <a href="https://www.linkedin.com/in/adisatapathy" target="_blank"><img src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/linked-in-alt.svg" alt="LinkedIn @adisatapathy" height="40" style="margin: 0 15px;"/></a>
+  <img width="12" />
+  <a href="mailto:satgriezeleo1007@gmail.com" target="_blank"><img src="https://cdn.simpleicons.org/gmail/EA4335" alt="satgriezeleo1007@gmail.com" height="40" style="margin: 0 15px;"/></a>
+</p>
+
+<p align="center">
+  <a href="https://github.com/gitadi2"><code>@gitadi2</code></a> &middot;
+  <a href="https://www.linkedin.com/in/adisatapathy"><code>@adisatapathy</code></a> &middot;
+  <a href="mailto:satgriezeleo1007@gmail.com"><code>satgriezeleo1007@gmail.com</code></a>
+</p>
+
+<p align="center"><em>Built for <b>Flipkart Gridlock 2.0</b>, 2026</em></p>
+
+<p align="center">
+  <a href="https://www.flipkart.com/" target="_blank"><img src="https://github.com/Flipkart.png" alt="Flipkart" height="44"/></a>
+</p>
