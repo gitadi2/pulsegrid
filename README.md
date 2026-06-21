@@ -2,13 +2,20 @@
 
 **Gridlock Hackathon 2.0 · Round 2 · Theme: Event-Driven Congestion (Planned & Unplanned)**
 
+<p align="center">
+  <a href="https://pulsegrid-diecjwaeyxc8supyngnd4y.streamlit.app/" target="_blank"><img src="https://img.shields.io/badge/%E2%96%B6%20Live%20Demo-Open%20the%20Console-36CFC9?style=for-the-badge" alt="Live Demo"/></a>
+  <img src="https://img.shields.io/badge/Streamlit-Cloud-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white" alt="Streamlit"/>
+  <img src="https://img.shields.io/badge/scikit--learn-ML-F7931E?style=for-the-badge&logo=scikitlearn&logoColor=white" alt="scikit-learn"/>
+  <img src="https://img.shields.io/badge/Python-3.x-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python"/>
+</p>
+
 PulseGrid turns Bengaluru Traffic Police's raw incident stream into **decisions**. The moment an
 event is logged, it forecasts the disruption and recommends a deployment plan — how long it will
 take to clear, whether it needs barricading or a diversion, and how many officers to send — then
 plans city-wide staffing from a volume forecast and lets a controller **run the whole thing live**.
 
 Built on **8,173 real, anonymised ASTraM incidents** (Nov 2023 – Apr 2024).
-Live demo: deployed on Streamlit Community Cloud · all ML in scikit-learn, no heavy dependencies.
+**🔴 Live demo → https://pulsegrid-diecjwaeyxc8supyngnd4y.streamlit.app/** · all ML in scikit-learn, no heavy dependencies.
 
 ---
 
@@ -78,7 +85,7 @@ hour-of-day incidence at r≈0.98. All ML is scikit-learn `HistGradientBoosting`
 
 ---
 
-## Run it
+## Run locally
 
 ```bash
 pip install -r requirements.txt
@@ -86,13 +93,7 @@ streamlit run app.py
 ```
 
 The dataset lives at `data/astram_events.csv` (the loader also finds it at the repo root or under any
-ASTraM-style filename). Models train once on first load and are cached.
-
-## Deploy (free, public link for the judges)
-
-1. Push this folder to a **public** GitHub repo (include the data CSV).
-2. Go to https://share.streamlit.io → **Create app** → pick the repo → main file `app.py`.
-3. Done — you get a shareable URL to demo live.
+ASTraM-style filename). Models train once on first load (~1 min) and are cached.
 
 ## Structure
 
